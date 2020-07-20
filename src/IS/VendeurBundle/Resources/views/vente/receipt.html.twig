@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- overlayScrollbars -->
+    <style type="text/css">
+        * {
+            font-size: 12px;
+            font-family: 'Times New Roman';
+        }
+
+        td,
+        th,
+        tr,
+        table {
+            border-top: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td.description,
+        th.description {
+            width: 75px;
+            max-width: 75px;
+        }
+
+        td.quantity,
+        th.quantity {
+            width: 40px;
+            max-width: 40px;
+            word-break: break-all;
+        }
+
+        td.price,
+        th.price {
+            width: 40px;
+            max-width: 40px;
+            word-break: break-all;
+        }
+
+        .centered {
+            text-align: center;
+            align-content: center;
+        }
+
+        .ticket {
+            width: 155px;
+            max-width: 155px;
+        }
+
+        img {
+            max-width: inherit;
+            width: inherit;
+        }
+
+        @media print {
+            .hidden-print,
+            .hidden-print * {
+                display: none !important;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="ticket">
+    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+    <p style="font-weight: bold" class="centered">FACTURE DE PAIEMENT
+        <br>Badalabougou SEMA
+        <br>près du palais de la culture
+        <br>Contact:
+        <br>{{ vente.createdAt | date('d-m-Y à H:i:s') }}
+    </p>
+
+    <p class="centered">No Table {{ vente.table }}<br>
+        Vendu par: {{ vente.saleBy.nom }}</p>
+    <table>
+        <thead>
+        <tr>
+            <th class="quantity">Q.</th>
+            <th class="description">Description</th>
+            <th class="price">Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set total = 0 %}
+        {% for v in vente.paniers %}
+            <tr>
+                <td class="quantity">1</td>
+                <td class="description">{{ v.products.nom }} {{ v.variation.taille.nom }}</td>
+                <td class="price">{{ (v.variation.prix ) |number_format(0, '.', ' ') }}</td>
+            </tr>
+            {% set total = total + (v.variation.prix ) %}
+        {% endfor %}
+        <tr>
+            <td class="quantity"></td>
+            <td class="description">TOTAL</td>
+            <td class="price">{{ total  |number_format(0, '.', ' ') }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="centered">Merci pour votre confiance !Commandez en ligne sur
+        <br><b>smoothiebko.ml</b></p>
+</div>
+<button id="btnPrint" class="hidden-print">Imprimer</button>
+<a href="{{ path('vente_index') }}" id="btnPrint" class="hidden-print">Retourner</a>
+<script>
+    const $btnPrint = document.querySelector("#btnPrint");
+    $btnPrint.addEventListener("click", () => {
+        window.print();
+    });
+</script>
+
+</body>
+</html>

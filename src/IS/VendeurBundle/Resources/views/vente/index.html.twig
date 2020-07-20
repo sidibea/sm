@@ -1,0 +1,120 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Liste des ventes {% endblock %}
+
+{% block pagestyle %}
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<!-- Theme style -->
+{% endblock %}
+
+
+{% block pageTitle %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Gestion des ventes</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Gestion des ventes</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des produits</h3>
+                    <div class="card-tools">
+                        <a href="{{ path('vente_new') }}"  class="btn btn-block bg-gradient-primary btn-lg">Nouveau</a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Vendu par</th>
+                            <th>Montant</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% set total = 0 %}
+                        {% for v in ventes %}
+                            <tr>
+                                <td>{{ v.createdAt | date('d-m-Y') }}</td>
+                                <td>{{ v.client.nom }}</td>
+                                <td>{{ v.saleBy.nom }}</td>
+                                <td>
+                                    {% for l in v.paniers  %}
+                                        {% set total = total + (l.variation.prix) %}
+
+                                    {% endfor %}
+                                    {{ total }}
+                                </td>
+                                <td>
+                                    <a href="{{ path('vente_edit', { 'id': v.id }) }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i></a>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+
+
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Composition</th>
+                            <th>Active</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- AdminLTE App -->
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}

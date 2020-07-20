@@ -1,0 +1,52 @@
+vente_index:
+    path:     /
+    defaults: { _controller: "ISMainBundle:Vente:index" }
+    methods:  GET
+vente_receipt:
+    path:     /{id}/receipt
+    defaults: { _controller: "ISMainBundle:Vente:receipt" }
+    methods:  GET
+vente_show:
+    path:     /{id}/show
+    defaults: { _controller: "ISMainBundle:Vente:show" }
+    methods:  GET
+
+vente_new:
+    path:     /new
+    defaults: { _controller: "ISMainBundle:Vente:new" }
+    methods:  [GET, POST]
+panier:
+    path:     /ajouter-panier/{id}
+    defaults: { _controller: "ISMainBundle:Vente:addpanier" }
+    methods:  GET
+panier_edit:
+    path:     /ajouter-panier/{id}/{vente}
+    defaults: { _controller: "ISMainBundle:Vente:Editpanier" }
+    methods:  GET
+variations:
+    path:     /ajouter-variation/{panier}/{variations}
+    defaults: { _controller: "ISMainBundle:Vente:addVariation" }
+    methods:  GET
+panier_delete:
+    path:     /panier/{panier}/delete
+    defaults: { _controller: "ISMainBundle:Vente:deletePanier" }
+    methods:  GET
+validations:
+    path:     /validation/{client}/{table}
+    defaults: { _controller: "ISMainBundle:Vente:validation" }
+    methods:  GET
+validations_edit:
+    path:     /validation/{client}/{table}/{vente}
+    defaults: { _controller: "ISMainBundle:Vente:validationEdit" }
+    methods:  GET
+vente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ISMainBundle:Vente:edit" }
+    methods:  [GET, POST]
+
+vente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ISMainBundle:Vente:delete" }
+qte_change:
+    path:     /change-qte/{panier}/{qte}
+    defaults: { _controller: "ISMainBundle:Vente:changeQte" }

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="914e4d26-4445-407e-9bb9-4b386edc81ae" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="smoothie@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="smoothie@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="smo" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>fournisseur</find>
+      <find>$matiere</find>
+      <find>exten</find>
+      <find>#ta</find>
+      <find>Visitors</find>
+      <find>Home</find>
+      <find>ISMainBundle</find>
+      <find>vente_index</find>
+      <find>vente_</find>
+      <find>../../</find>
+      <find>$removeButton</find>
+      <find>newForm</find>
+      <find>prototype</find>
+      <find>e</find>
+      <find>ribbon</find>
+      <find>panel</find>
+      <find>.ribbon</find>
+      <find>Client</find>
+      <find>$product</find>
+      <find>good</find>
+      <find>lis</find>
+      <find>produc</find>
+      <find>panier</find>
+      <find>pri</find>
+      <find>cust</find>
+      <find>path</find>
+      <find>edit</find>
+      <find>variationsDeleteAction</find>
+      <find>variations_delete</find>
+      <find>assets/</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>$product</replace>
+      <replace>matiere_</replace>
+      <replace>Matiere</replace>
+      <replace>$matiere</replace>
+      <replace>$portion</replace>
+      <replace>$client</replace>
+      <replace>ISUserBundle</replace>
+      <replace>is_user_homepage</replace>
+      <replace>is_vente_</replace>
+      <replace>$removeButton1</replace>
+      <replace>newForm1</replace>
+      <replace>prototype1</replace>
+      <replace>c</replace>
+      <replace>panel</replace>
+      <replace>bb</replace>
+      <replace>.delete</replace>
+      <replace>category_</replace>
+      <replace>Category</replace>
+      <replace>$category</replace>
+    </replaceStrings>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/braincrafted/bootstrap-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/assetic-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/ninsuo/symfony-collection" />
+      <path value="$PROJECT_DIR$/vendor/oyejorge/less.php" />
+      <path value="$PROJECT_DIR$/vendor/kriswallsmith/assetic" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1erc8DoSbcmt5cG5oB6645mzcrI" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/IS/MainBundle/Resources/views/rapport" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp2\htdocs\smo\src\IS\VendeurBundle\Resources\config\routing" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\MainBundle\Form" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\MainBundle\Controller" />
+      <recent name="C:\xampp2\htdocs\smo\web\dist\js" />
+      <recent name="C:\xampp\htdocs\smoothie\src\IS\MainBundle\Resources\views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\smo\src\IS\MainBundle\Resources\views\rapport" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\VendeurBundle\Resources\config" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\VendeurBundle\Resources\views" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\MainBundle\Resources\views" />
+      <recent name="C:\xampp2\htdocs\smo\src\IS\MainBundle\Repository" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="914e4d26-4445-407e-9bb9-4b386edc81ae" name="Default" comment="" />
+      <created>1592990198178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592990198178</updated>
+      <workItem from="1592990200406" duration="1356000" />
+      <workItem from="1592992181515" duration="7022000" />
+      <workItem from="1593001270509" duration="691000" />
+      <workItem from="1593011885100" duration="651000" />
+      <workItem from="1593018843450" duration="8563000" />
+      <workItem from="1593041467205" duration="5339000" />
+      <workItem from="1593082688435" duration="4559000" />
+      <workItem from="1593127954665" duration="621000" />
+      <workItem from="1593134418834" duration="6385000" />
+      <workItem from="1593176126350" duration="2134000" />
+      <workItem from="1593257295894" duration="14773000" />
+      <workItem from="1593274881635" duration="861000" />
+      <workItem from="1593276569024" duration="26221000" />
+      <workItem from="1593356199362" duration="16411000" />
+      <workItem from="1593374333659" duration="58000" />
+      <workItem from="1593426633886" duration="10183000" />
+      <workItem from="1593438745097" duration="12811000" />
+      <workItem from="1593541330243" duration="38000" />
+      <workItem from="1593731192566" duration="11031000" />
+      <workItem from="1593788833160" duration="5902000" />
+      <workItem from="1593825389475" duration="1266000" />
+      <workItem from="1593961362619" duration="31563000" />
+      <workItem from="1594036100785" duration="25325000" />
+      <workItem from="1594068906591" duration="10075000" />
+      <workItem from="1594120021634" duration="26031000" />
+      <workItem from="1594165247874" duration="7496000" />
+      <workItem from="1594221630416" duration="54000" />
+      <workItem from="1594221746588" duration="17958000" />
+      <workItem from="1594245089639" duration="5860000" />
+      <workItem from="1594291782289" duration="1414000" />
+      <workItem from="1594296533956" duration="982000" />
+      <workItem from="1594298634191" duration="1064000" />
+      <workItem from="1594300457077" duration="1488000" />
+      <workItem from="1594302849858" duration="831000" />
+      <workItem from="1594309893381" duration="2316000" />
+      <workItem from="1594312974669" duration="958000" />
+      <workItem from="1594314422054" duration="885000" />
+      <workItem from="1594316310632" duration="3028000" />
+      <workItem from="1594332996470" duration="2201000" />
+      <workItem from="1594379604755" duration="5433000" />
+      <workItem from="1595083016029" duration="878000" />
+      <workItem from="1595089903523" duration="5305000" />
+      <workItem from="1595255081463" duration="11278000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

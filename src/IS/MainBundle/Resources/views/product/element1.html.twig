@@ -1,0 +1,69 @@
+<style>
+    .product-box {
+        font: 13px/23px "Raleway", Arial, sans-serif;
+        color: #b21f2d;
+        padding: 5px 0 0 0;
+        border: 2px solid #f1c40f;
+        width: 100%;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.137);
+    }
+    .product-box img{
+        width: 100%;
+        height: 300px;
+        margin:0;
+        padding: 0;
+    }
+
+    .price {
+        font-size: 15px;
+        color: #00b44e;
+        text-align: center;
+    }
+    .name{
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+
+
+
+
+
+
+
+
+
+</style>
+{% for p in products %}
+    <div class="col-4">
+        <div class="product-box">
+            <div class="container">
+                <img src="{{ asset('images/products/'~p.image) }}" alt="cookies" class="hero-image" />
+                <div class="information">
+
+                    <div class="name">{{ p.nom }}</div>
+
+                    <div class="store">ikea.com</div>
+
+
+
+                </div> <!-- end information -->
+                <div class="price">
+                    {% for v in p.variations %}
+                        <strong>
+                            <small class="badge badge-success"><i class="far fa-money"></i> {{ v.taille.nom }} : {{ v.prix }}</small>
+
+                        </strong>
+                    {% endfor %}
+                </div>
+
+                <div >
+                    <a  href="{{ path('panier', { 'id': p.id }) }}" class="btn btn-primary btn-xs js-add">Ajouter au panier</a>
+                </div>
+
+
+            </div> <!-- end container -->
+        </div> <!-- end product-box -->
+    </div>
+{% endfor %}
+

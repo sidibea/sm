@@ -1,0 +1,21 @@
+rapport_index:
+    path:     /
+    defaults: { _controller: "ISMainBundle:Rapport:index" }
+    methods:  GET
+rapport_stock_portions:
+    path:     /stock/portions
+    defaults: { _controller: "ISMainBundle:Rapport:stockPortion" }
+    methods:  GET
+rapport_stock_portions2:
+    path:     /stock/portions2
+    defaults: { _controller: "ISMainBundle:Rapport:stockPortion2" }
+    methods:  GET
+rapport_stock_matieres:
+    path:     /stock/matiere
+    defaults: { _controller: "ISMainBundle:Rapport:stockMatiere" }
+    methods:  GET
+rapport_achat_matiere:
+    path:     /achat/matiere-premiere
+    defaults: { _controller: "ISMainBundle:Rapport:achatMatiere" }
+    methods:  GET
+

@@ -1,0 +1,38 @@
+is_main_homepage:
+    path:     /
+    defaults: { _controller: ISMainBundle:Main:index }
+is_main_stock:
+    path:     /stock
+    defaults: { _controller: ISMainBundle:Main:stock }
+is_main_product:
+    resource: "@ISMainBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+is_main_category:
+    resource: "@ISMainBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+is_main_client:
+    resource: "@ISMainBundle/Resources/config/routing/client.yml"
+    prefix:   /client
+is_main_matiere:
+    resource: "@ISMainBundle/Resources/config/routing/matiere.yml"
+    prefix:   /matiere
+
+is_main_achat_marchandise:
+    resource: "@ISMainBundle/Resources/config/routing/achatmarchandise.yml"
+    prefix:   /achat
+
+is_main_portions:
+    resource: "@ISMainBundle/Resources/config/routing/portions.yml"
+    prefix:   /portions
+is_main_ventes:
+    resource: "@ISMainBundle/Resources/config/routing/vente.yml"
+    prefix:   /vente
+is_main_rapports:
+    resource: "@ISMainBundle/Resources/config/routing/rapport.yml"
+    prefix:   /rapport
+is_main_depense:
+    resource: "@ISMainBundle/Resources/config/routing/depense.yml"
+    prefix:   /depense
+is_main_user:
+    resource: "@ISMainBundle/Resources/config/routing/user.yml"
+    prefix:   /user

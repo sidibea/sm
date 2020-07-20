@@ -1,0 +1,103 @@
+{% extends "ISMainBundle::layout.html.twig" %}
+{% block pagestyle %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+{% endblock %}
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green">Gestion des  produits</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Variations du produit : {{ product.nom }}</h3>
+                    <div class="card-tools">
+                        <a href="{{ path('product_new') }}"  class="btn btn-block bg-gradient-primary btn-lg">Nouveau</a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Taille</th>
+                            <th>Prix</th>
+                            <th>Composition</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for v in product.variations %}
+                            <tr>
+                                <td>{{ v.taille.nom }}</td>
+                                <td>{{ v.prix }}</td>
+                                <td>
+                                    {% for c in v.compositions %}
+                                        {{ c.matiere.nom }}: {{ c.qte }} {{ c.unite.nom }} <br>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('product_variations_edit', { 'id': product.id, 'variation': v.id }) }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i></a>
+                                    <a onclick="return confirm('Voulez-vous vraiment supprimer ce produit')" href="{{ path('product_variations_delete', { 'id': v.id }) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Taille</th>
+                            <th>Prix</th>
+                            <th>Composition</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- AdminLTE App -->
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}

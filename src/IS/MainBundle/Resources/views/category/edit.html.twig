@@ -1,0 +1,58 @@
+{% extends "ISMainBundle::layout.html.twig" %}
+{% block pagestyle %}
+
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green"> Gestion des produits</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        {{ form_start(form, {'attr': { 'class' : 'form' }}) }}
+
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Modification categorie: {{ category.nom }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="">Nom de la categorie</label>
+                    {{ form_widget(form.nom, {'attr': {'class': '' }}) }}
+                </div>
+                <div class="form-check">
+                    {{ form_widget(form.isEnabled, {'attr': {'class': 'form-check-input' }}) }}
+                    <label for="">Active ?</label>
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+            </div>
+        </div>
+        {{ form_rest(form) }}
+
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

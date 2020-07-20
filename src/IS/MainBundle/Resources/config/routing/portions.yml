@@ -1,0 +1,24 @@
+portions_index:
+    path:     /
+    defaults: { _controller: "ISMainBundle:Portions:index" }
+    methods:  GET
+
+portions_show:
+    path:     /{id}/show
+    defaults: { _controller: "ISMainBundle:Portions:show" }
+    methods:  GET
+
+portions_new:
+    path:     /new
+    defaults: { _controller: "ISMainBundle:Portions:new" }
+    methods:  [GET, POST]
+
+portions_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ISMainBundle:Portions:edit" }
+    methods:  [GET, POST]
+
+portions_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ISMainBundle:Portions:delete" }
+    methods:  DELETE

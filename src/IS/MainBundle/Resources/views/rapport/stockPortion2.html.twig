@@ -1,0 +1,91 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Liste des ventes {% endblock %}
+
+{% block pagestyle %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green"> Rapport stock de portion </h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Rapport de stock</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered">
+                        <thead>
+                        <tr>
+
+                            <th>Produit</th>
+                            <th>Entrees</th>
+                            <th>Sorties</th>
+                            <th>Reels</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for e in stocks %}
+                            <tr>
+                                <td>{{ e.nom }}</td>
+                                <td>{{ e.SIN }}</td>
+                                <td>{{ e.SOUT }}</td>
+                                <td>{{ e.SIN - e.SOUT }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Liste des ventes {% endblock %}
+
+{% block pagestyle %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+{% endblock %}
+
+
+{% block pageTitle %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Rapports de stock</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Rapports de stock</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12  ">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="list-group parent-list">
+                        <a href="{{ path('rapport_stock_matieres') }}" class="list-group-item" id="saved"><i class="icon ti-heart" style="color: #fb5d5d"></i>	Stock de matières premières</a>
+
+                        <a href="{{ path('rapport_stock_portions') }}" class="list-group-item" id="appointments"><i class="icon ti-calendar"></i>	Stocks de portions de fruits</a>
+                        <a href="{{ path('rapport_stock_portions2') }}" class="list-group-item" id="appointments"><i class="icon ti-calendar"></i>	Stocks de portions</a>
+
+
+                        <a href="{{ path('rapport_achat_matiere') }}" class="list-group-item" id="categories"><i class="icon ti-layout-grid3"></i>Achats de matières premières</a>
+
+
+                        <a href="#" class="list-group-item" id="closeout"><i class="icon ti-close"></i>	Autres Achats</a>
+                        <a href="#" class="list-group-item" id="closeout"><i class="icon ti-close"></i>	Rapports de vente</a>
+
+
+                    </div>
+                </div>
+            </div> <!-- /panel -->
+        </div>
+    </div>
+{% endblock %}

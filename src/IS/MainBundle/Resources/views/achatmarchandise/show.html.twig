@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Achatmarchandise</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ achatMarchandise.id }}</td>
+            </tr>
+            <tr>
+                <th>Qte</th>
+                <td>{{ achatMarchandise.qte }}</td>
+            </tr>
+            <tr>
+                <th>Fournisseur</th>
+                <td>{{ achatMarchandise.fournisseur }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if achatMarchandise.createdAt %}{{ achatMarchandise.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if achatMarchandise.updatedAt %}{{ achatMarchandise.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ achatMarchandise.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('achatmarchandise_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('achatmarchandise_edit', { 'id': achatMarchandise.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

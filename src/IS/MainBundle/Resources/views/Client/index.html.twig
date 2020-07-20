@@ -1,0 +1,112 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Liste des clients {% endblock %}
+
+{% block pagestyle %}
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<!-- Theme style -->
+{% endblock %}
+
+
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green">Gestion des  clients</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des clients</h3>
+                    <div class="card-tools">
+                        <a href="{{ path('client_new') }}"  class="btn btn-block bg-gradient-primary btn-lg">Nouveau</a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in clients %}
+                            <tr>
+                                <td>{{ p.nom }}</td>
+                                <td>{{ p.adresse }}</td>
+                                <td>{{ p.email }}</td>
+                                <td>{{ p.telephone }}</td>
+
+                                <td>
+                                    <a href="{{ path('client_edit', { 'id': p.id }) }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i></a>
+                                    <a onclick="return confirm('Voulez-vous vraiment supprimer ce client')" href="{{ path('client_delete', { 'id': p.id }) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+
+
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- AdminLTE App -->
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}

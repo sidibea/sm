@@ -1,0 +1,147 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Liste des ventes {% endblock %}
+
+{% block pagestyle %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green"> Rapport stock de portion fruits</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Entrée de stock</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+
+                            <th>Produit</th>
+                            <th>L</th>
+                            <th>M</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for e in entrees %}
+                            <tr>
+                                <td>{{ e.nom }}</td>
+                                <td>{{ e.L }}</td>
+                                <td>{{ e.M }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+        <div class="col-md-4">
+            <!-- general form elements -->
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Sortie de stock</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>L</th>
+                            <th>M</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for e in sorties %}
+                            <tr>
+                                <td>{{ e.nom }}</td>
+                                <td>{{ e.L }}</td>
+                                <td>{{ e.M }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+        <div class="col-md-4">
+            <!-- general form elements -->
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Stock Reel</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>L</th>
+                            <th>M</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for e in reel %}
+
+                            <tr>
+                                <td>{{ e.nom }}</td>
+                                <td>{{ e.EL - e.SL }}</td>
+                                <td>{{ e.EM - e.SM }}</td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+    </div>
+{% endblock %}

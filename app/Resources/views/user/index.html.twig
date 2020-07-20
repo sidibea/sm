@@ -1,0 +1,142 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Gestion des utilisateurs {% endblock %}
+
+{% block pagestyle %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- Theme style -->
+{% endblock %}
+
+
+{% block pageTitle %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Gestion des utilisateurs</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Gestion des utilisateurs</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des utilisateurs</h3>
+                    <div class="card-tools">
+                        <a href="{{ path('user_new') }}"  class="btn btn-block bg-gradient-primary btn-lg">Nouveau</a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <form class="env" method="get">
+                            <div class="input-group input-group-sm">
+                                <input value="{{ app.request.get('daterange') }}" name="daterange" type="text" class="form-control daterange">
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Nom d'utilisateur</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for a in users %}
+                            <tr>
+                                <td>{{ a.nom }}</td>
+                                <td>{{ a.username }}</td>
+                                <td>{{ a.email }}</td>
+                                <td>
+                                    {% for r in a.roles %}
+                                    {% if r == 'ROLE_ADMIN' %} Administrateur {% elseif r == 'ROLE_VENDEUR' %} Vendeur{% endif %}
+                                    {% endfor %}
+                                </td>
+
+                                <td>
+                                    <a href="{{ path('user_edit', { 'id': a.id }) }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i></a>
+                                    <a onclick="return confirm('Voulez-vous vraiment supprimer cette depense ?')" href="{{ path('depense_delete', { 'id': a.id }) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+
+
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- AdminLTE App -->
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            $('.daterange').daterangepicker({
+                ranges   : {
+                    'Today'       : [moment(), moment()],
+                    'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate  : moment()
+            }, function (start, end) {
+                $('.daterange').val(start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY'));
+                $('.env').submit()
+
+            })
+        });
+    </script>
+{% endblock %}

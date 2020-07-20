@@ -1,0 +1,32 @@
+product_index:
+    path:     /
+    defaults: { _controller: "ISMainBundle:Product:index" }
+    methods:  GET
+
+product_show:
+    path:     /{id}/show
+    defaults: { _controller: "ISMainBundle:Product:show" }
+    methods:  GET
+
+product_new:
+    path:     /new
+    defaults: { _controller: "ISMainBundle:Product:new" }
+    methods:  [GET, POST]
+
+product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ISMainBundle:Product:edit" }
+    methods:  [GET, POST]
+
+product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ISMainBundle:Product:delete" }
+product_variations:
+    path:     /{id}/variations
+    defaults: { _controller: "ISMainBundle:Product:variations" }
+product_variations_edit:
+    path:     /{id}/variations/{variation}
+    defaults: { _controller: "ISMainBundle:Product:variationsEdit" }
+product_variations_delete:
+    path:     /{id}/variations-delete
+    defaults: { _controller: "ISMainBundle:Product:variationsDelete" }

@@ -1,0 +1,19 @@
+is_vendeur:
+    resource: "@ISVendeurBundle/Resources/config/routing.yml"
+    prefix:   /vendeur
+
+is_main:
+    resource: "@ISMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    path:   /login
+    defaults:  { _controller: ISMainBundle:Security:login }
+
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

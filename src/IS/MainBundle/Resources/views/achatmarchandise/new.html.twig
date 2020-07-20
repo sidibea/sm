@@ -1,0 +1,177 @@
+{% extends 'ISMainBundle::layout.html.twig' %}
+
+{% block title %} Gestion des matières premières{% endblock %}
+
+{% block pageTitle %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Nouvel Achat de marchandise</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Nouvel achat</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
+    {% block pagestyle %}
+        <style>
+            #is_mainbundle_product_compositions >div{
+                border: 1px solid;
+                border-radius: 10px;
+                border-color: #dc1f43;
+                margin-top: 10px;
+                padding: 10px;
+                box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.137);
+            }
+
+
+            #is_mainbundle_product_compositions {
+
+
+
+
+            }
+        </style>
+    {% endblock %}
+
+
+
+{% block content %}
+    <div class="row">
+
+        <div class="col-12">
+            {{ form_start(form, {'attr': { 'class' : 'form' }}) }}
+
+            {# Les erreurs générales du formulaire. #}
+            {{ form_errors(form) }}
+            <!-- general form elements -->
+            <div class="card card-primary">
+
+                <!-- /.card-header -->
+
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label for="">Matière</label>
+                            {{ form_widget(form.matiere, {'attr': {'class': 'form-control' }}) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="">Montant total</label>
+                            {{ form_widget(form.prix, {'attr': {'class': 'form-control' }}) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="">Fournisseur</label>
+                            {{ form_widget(form.fournisseur, {'attr': {'class': 'form-control' }}) }}
+                        </div>
+                       <div class="row">
+                           <div class="col-md-6">
+                               <label for="">Quantite</label>
+                               {{ form_widget(form.qte, {'attr': {'class': 'form-control' }}) }}
+                           </div>
+                           <div class="col-md-6">
+                               <label for="">Unite</label>
+                               {{ form_widget(form.unite, {'attr': {'class': 'form-control' }}) }}
+                           </div>
+                       </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+
+            </div>
+            <!-- /.card -->
+            {{ form_rest(form) }}
+
+            {# Fermeture de la balise <form> du formulaire HTML #}
+            {{ form_end(form) }}
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- AdminLTE App -->
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+            var $container = $('div#is_mainbundle_product_compositions');
+
+            // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+            var index = $container.find(':input').length;
+
+            // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+            $('#add_category').click(function(e) {
+                addCategory($container);
+
+                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                return false;
+            });
+
+            // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
+            if (index == 0) {
+                addCategory($container);
+            } else {
+                // S'il existe déjà des catégories, on ajoute un lien de suppression pour chacune d'entre elles
+                $container.children('div').each(function() {
+                    addDeleteLink($(this));
+                });
+            }
+
+            // La fonction qui ajoute un formulaire CategoryType
+            function addCategory($container) {
+                // Dans le contenu de l'attribut « data-prototype », on remplace :
+                // - le texte "__name__label__" qu'il contient par le label du champ
+                // - le texte "__name__" qu'il contient par le numéro du champ
+                var template = $container.attr('data-prototype')
+                    .replace(/__name__label__/g, 'Composition n°' + (index+1))
+                    .replace(/__name__/g,        index)
+                ;
+
+                // On crée un objet jquery qui contient ce template
+                var $prototype = $(template);
+
+                // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+                addDeleteLink($prototype);
+
+                // On ajoute le prototype modifié à la fin de la balise <div>
+                $container.append($prototype);
+
+                // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+                index++;
+            }
+
+            // La fonction qui ajoute un lien de suppression d'une catégorie
+            function addDeleteLink($prototype) {
+                // Création du lien
+                var $deleteLink = $('<a href="#" class="btn btn-danger ">Supprimer</a><br>');
+
+                // Ajout du lien
+                $prototype.append($deleteLink);
+
+                // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
+                $deleteLink.click(function(e) {
+                    $prototype.remove();
+
+                    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                    return false;
+                });
+            }
+        });
+    </script>
+{% endblock %}

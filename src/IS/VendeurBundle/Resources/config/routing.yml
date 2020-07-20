@@ -1,0 +1,3 @@
+is_vendeur_ventes:
+    resource: "@ISVendeurBundle/Resources/config/routing/vente.yml"
+    prefix:   /vente

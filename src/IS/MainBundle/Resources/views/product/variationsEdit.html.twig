@@ -1,0 +1,162 @@
+{% extends "ISMainBundle::layout.html.twig" %}
+{% block pagestyle %}
+
+
+{% endblock %}
+{% macro compositionsForm(form) %}
+    <div class="col-12">
+        <div class="position-s p-3 bg-gray" style="height: 180px">
+            <div class="ribbon-wrapper">
+                <div class="ribbon bg-primary">
+                    Ribbon
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Matiere</label>
+                        {{ form_widget(form.matiere, {'attr': {'class': '' }}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Qte</label>
+                        {{ form_widget(form.qte, {'attr': {'class': '' }}) }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Unite</label>
+                        {{ form_widget(form.unite, {'attr': {'class': '' }}) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endmacro compositionsForm %}
+
+
+{% import _self as formMacros %}
+{% block breadcrumb %}
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green">{{ product.nom }} : {{ variation.taille.nom }}</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-12">
+    <!-- Custom Tabs -->
+    {{ form_start(form, {'attr': { 'class' : 'form' }}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Taille</label>
+                            {{ form_widget(form.taille, {'attr': {'class': '' }}) }}
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Prix</label>
+                            {{ form_widget(form.prix, {'attr': {'class': '' }}) }}
+                        </div>
+
+                    </div>
+                </div>
+
+                    <div class="row">
+                        <div class="col-md-12" id="compositions" data-prototype="{{ formMacros.compositionsForm(form.compositions.vars.prototype)|e('html_attr') }}">
+                            {% for row in form.compositions %}
+                                <div class="col-12">
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading"></div>
+                                        <div class="panel-body">
+                                            <div class="position-s p-3 bg-gray" style="height: 180px">
+                                                <div class="ribbon-wrapper">
+                                                    <div class="ribbon bg-primary">
+                                                        Ribbon
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="">Matiere</label>
+                                                            {{ form_widget(row.matiere, {'attr': {'class': '' }}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="">Qte</label>
+                                                            {{ form_widget(row.qte, {'attr': {'class': '' }}) }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="">Unite</label>
+                                                            {{ form_widget(row.unite, {'attr': {'class': '' }}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="panel-footer"></div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </div>
+
+
+        {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}
+
+{% block pagescripts %}
+    <script src="{{ asset('dist/js/app-edit.js') }}"></script>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

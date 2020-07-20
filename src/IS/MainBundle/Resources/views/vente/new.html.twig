@@ -1,0 +1,322 @@
+{% extends "ISMainBundle::layout.html.twig" %}
+{% block pagestyle %}
+	<style type="text/css">/* Chart.js */
+		.btn-app{
+			background: #b21f2d;
+			border: 1px solid;
+			border-radius: 5px;
+			border-color: #dc1f43;
+			box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.137);
+			opacity: 80%;
+			width: 80%;
+			height: 100%;
+			font-size: 30px;
+			font-weight: bold;
+			color: #fff !important;
+		}
+		.btn-app:hover {
+
+			color: #000 !important;
+		}
+		.btn-app>.fas{
+			font-size: 80px;
+			color: #f1c40f;
+		}
+		.content-wrapper{
+			background-image: url("dist/img/2.jpg");
+
+		}
+	</style>
+
+{% endblock %}
+
+{% block breadcrumb %}
+	<!-- Content Header (Page header) -->
+	<div class="content-header">
+		<div class="container">
+			<div class="row mb-2" style="color: #fff !important;">
+				<div class="col-sm-6">
+					<h1 class="m-0 text-green">Gestion des  ventes</h1>
+				</div><!-- /.col -->
+				<div class="col-sm-6">
+
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-10 col-md-8">
+				<!-- Custom Tabs -->
+				<div class="card">
+					<div class="card-header d-flex p-0">
+						<h3 class="card-title p-3">Liste des produits</h3>
+						<ul class="nav nav-pills ml-auto p-2">
+                            {% for c in categories %}
+								<li class="nav-item"><a class="nav-link " href="#tab_{{ c.id }}" data-toggle="tab">{{ c.nom }}</a></li>
+                            {% endfor %}
+
+
+						</ul>
+					</div><!-- /.card-header -->
+					<div class="card-body">
+						<div class="tab-content">
+
+								<!-- /.tab-pane -->
+                                {% for c in categories %}
+									<div class="tab-pane" id="tab_{{ c.id }}">
+                                        
+                                           <div class="row">
+ {{ render(controller(
+                                                'ISMainBundle:Product:byCategoryP',
+                                                { 'id': c.id }
+                                            )) }}
+</div>
+										
+									</div>
+                                {% endfor %}
+								<!-- /.tab-pane -->
+
+						</div>
+						<!-- /.tab-content -->
+					</div><!-- /.card-body -->
+				</div>
+				<!-- ./card -->
+			</div>
+
+
+			<div class="col-md-4">
+				<form method="post">
+				<div class="card" style="overflow: auto;">
+					<div class="card-header">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Client</label>
+									<select required class="form-control" id="client" name="client">
+										{% for c in clients %}
+											<option value="{{ c.id }}">{{ c.nom }}</option>
+
+                                        {% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>No Table</label>
+									<input name="table" id="table" required class="">
+								</div>
+							</div>
+						</div>
+					</div>
+	<span id="cart">
+<table width="100%" class="table responsive table-hover shopping-cart-wrap">
+<thead class="text-muted text-center">
+<tr>
+  <th scope="col">produit</th>
+  <th scope="col" style="width: 50px">Prix</th>
+  <th scope="col" style="width: 50px">Qte</th>
+  <th scope="col" class="text-right" style="width: 50px">Supp</th>
+</tr>
+</thead>
+<tbody>
+{% if panier %}
+    {% for row in panier %}
+
+
+
+<tr>
+	<td>
+<figure class="media">
+	<div class="img-wrap"><img alt="{{ row.products.nom }}" src="{{ asset('images/products/'~row.products.image) }}" class="img-thumbnail img-xs"></div>
+	<figcaption class="media-body">
+		<small class="title text-truncate">{{ row.products.nom }} </small>
+		{% if row.products.variations != null %}
+		<select data-id="{{ row.id }}" class="js-change">
+			<option value="" disabled selected>Select</option>
+			{% for v in row.products.variations %}
+				<option {% if row.variation != null and v.taille.id == row.variation.taille.id   %} SELECTED {% endif %} value="{{ v.id }}">{{ v.taille.nom }}</option>
+			{% endfor %}
+
+		</select>
+		{% endif %}
+	</figcaption>
+</figure>
+	</td>
+
+	<td>
+		<div class="price-wrap">
+			<var id="{{ row.id }}" data-id="{{ row.id }}" class="price">
+				{% if row.variation != null  %} {{ row.variation.prix }} {% endif %}
+ 			</var>
+		</div> <!-- price-wrap .// -->
+	</td>
+	<td>
+		<input type="text" class="qte-change" data-qte="{{ row.id }}" value="{% if row.qte == 0 %}1{% else %}{{ row.qte }}{% endif %}" />
+	</td>
+	<td class="text-right">
+	<a href="{{ path('panier_delete', { 'panier': row.id }) }}" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+	</td>
+</tr>
+
+
+
+    {% endfor %}
+{% endif %}
+
+
+</tbody>
+	<tfoot>
+	<th colspan="3"><button type="submit" class="btn btn-primary float-right">Enregistrer</button> </th>
+	</tfoot>
+</table>
+</span>
+				</div> <!-- card.// -->
+				</form>
+			</div> <!-- end of col -->
+
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+	<script src="{{ asset('axios.js')}}"></script>
+	<script>
+
+        function onClickBtnAdd(event){
+            event.preventDefault();
+            const url = this.href;
+
+
+
+            axios.get(url).then(function(response){
+
+                if(response.data){
+
+                    location.reload();
+
+				}
+
+
+
+
+            }).catch(function(error){
+                if(error.response.status === 403)
+                {
+                    window.alert("Connectez-vous s'il vous plait")
+                }
+            });
+        }
+        document.querySelectorAll('a.js-add').forEach(function(link){
+            link.addEventListener('click', onClickBtnAdd);
+        });
+
+        const form = document.querySelector('form');
+
+        const formEvent = form.addEventListener('submit', async event => {
+            event.preventDefault();
+
+            var client = document.querySelector('#client').value;
+            var table = document.querySelector('#table').value;
+
+            var url = '{{ path('validations', {'client': 'client_id', 'table': 'table'}) }}';
+            url = url.replace("client_id", client);
+            url = url.replace("table", table);
+            axios.get(url).then(function(response){
+
+                if(response.data){
+                    var redirect = "{{ path('vente_receipt', {'id': 'id'}) }}"
+                    redirect = redirect.replace("id", response.data.vente);
+
+                    console.log(response.data);
+                    window.location.replace(redirect);
+
+                }
+
+
+
+
+            }).catch(function(error){
+                if(error.response.status === 403)
+                {
+                    window.alert("Connectez-vous s'il vous plait")
+                }
+            });
+
+
+
+        });
+
+
+        function onChangeVar(event){
+            event.preventDefault();
+            var id = this.getAttribute('data-id');
+            var taille = $('option:selected', this).attr('value');
+            var url = '{{ path('variations', {'panier': 'var_id', 'variations': 'taille_id'}) }}';
+            url = url.replace("var_id", id);
+            url = url.replace("taille_id", taille);
+			console.log(taille);
+
+            axios.get(url).then(function(response){
+
+                document.getElementById(id.toString()).innerHTML = response.data.prix;
+
+
+
+                console.log( response.data);
+
+
+            }).catch(function(error){
+                if(error.response.status === 403)
+                {
+                    window.alert("Connectez-vous s'il vous plait")
+                }
+            });
+        }
+        document.querySelectorAll('select.js-change').forEach(function(link){
+            link.addEventListener('change', onChangeVar);
+        });
+
+		$('.qte-change').on('input', function() {
+			event.preventDefault();
+			var id = this.getAttribute('data-qte');
+			var valeur = this.value;
+
+			console.log(id);
+			console.log(valeur);
+			var url = "{{ path('qte_change', {'panier': 'panier_id', 'qte': 'qte_val'}) }}";
+			console.log(url);
+			url = url.replace("panier_id", id);
+			url = url.replace("qte_val", valeur);
+			console.log(url);
+
+			axios.get(url).then(function(response){
+
+				if(response.data){
+
+					console.log(response.data);
+
+				}
+
+
+
+
+			}).catch(function(error){
+				if(error.response.status === 403)
+				{
+					window.alert("Connectez-vous s'il vous plait")
+				}
+			});
+		});
+
+
+
+
+
+	</script>
+{% endblock %}

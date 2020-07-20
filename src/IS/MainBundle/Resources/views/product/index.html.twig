@@ -1,0 +1,93 @@
+{% extends "ISMainBundle::layout.html.twig" %}
+{% block pagestyle %}
+    <style type="text/css">/* Chart.js */
+        .btn-app{
+            background: #b21f2d;
+            border: 1px solid;
+            border-radius: 5px;
+            border-color: #dc1f43;
+            box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.137);
+            opacity: 80%;
+            width: 80%;
+            height: 100%;
+            font-size: 30px;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .btn-app:hover {
+
+            color: #000 !important;
+        }
+        .btn-app>.fas{
+            font-size: 80px;
+            color: #f1c40f;
+        }
+        .content-wrapper{
+            background-image: url("dist/img/2.jpg");
+
+        }
+    </style>
+
+{% endblock %}
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2" style="color: #fff !important;">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-green">Gestion des  produits</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-2">
+            <div class="btn-group-vertical">
+                <a href="{{ path('product_new') }}" class="btn btn-default">Nouveau produit</a>
+                <a href="{{ path('category_index') }}" class="btn btn-default">Categories</a>
+            </div>
+        </div>
+        <div class="col-10">
+            <!-- Custom Tabs -->
+            <div class="card">
+                <div class="card-header d-flex p-0">
+                    <h3 class="card-title p-3">Liste des produits</h3>
+                    <ul class="nav nav-pills ml-auto p-2">
+                        {% for c in categories %}
+                            <li class="nav-item"><a class="nav-link " href="#tab_{{ c.id }}" data-toggle="tab">{{ c.nom }}</a></li>
+                        {% endfor %}
+
+
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+
+                        <!-- /.tab-pane -->
+                        {% for c in categories %}
+                            <div class="tab-pane" id="tab_{{ c.id }}">
+                                <div class="row">
+{{ render(controller(
+                                    'ISMainBundle:Product:byCategory',
+                                    { 'id': c.id }
+                                )) }}
+</div>
+                            </div>
+                        {% endfor %}
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+            </div>
+            <!-- ./card -->
+        </div>
+    </div>
+
+{% endblock %}

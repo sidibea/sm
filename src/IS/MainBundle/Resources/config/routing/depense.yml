@@ -1,0 +1,23 @@
+depense_index:
+    path:     /
+    defaults: { _controller: "ISMainBundle:Depense:index" }
+    methods:  GET
+
+depense_show:
+    path:     /{id}/show
+    defaults: { _controller: "ISMainBundle:Depense:show" }
+    methods:  GET
+
+depense_new:
+    path:     /new
+    defaults: { _controller: "ISMainBundle:Depense:new" }
+    methods:  [GET, POST]
+
+depense_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ISMainBundle:Depense:edit" }
+    methods:  [GET, POST]
+
+depense_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ISMainBundle:Depense:delete" }
